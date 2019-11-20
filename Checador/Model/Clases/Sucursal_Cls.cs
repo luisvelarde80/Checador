@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -184,7 +185,7 @@ namespace Checador.Model.Clases
          *                                         Agrega una nueva sucursal al catalogo                                                          *
          *                                                                                                                                                           *
          ******************************************************************************************************************************/
-        public Boolean AgregaSucursal(List<Sucursal_Mdl> sucursal)
+        public Boolean AgregaSucursal(DataTable sucursal)
         {
 
             Boolean Valor = false;
@@ -199,7 +200,7 @@ namespace Checador.Model.Clases
                 cmdObj.Connection = cnObj;
                 string strSql;
 
-                foreach(var suc in sucursal)
+                foreach(DataRow dRow in sucursal.Rows)
                 {
 
                     strSql = "INSERT ";
@@ -215,29 +216,29 @@ namespace Checador.Model.Clases
                     strSql += "id_pais, ";
                     strSql += "id_estado, ";
                     strSql += "id_ciudad, ";
-                    strSql += "codigo_pos, ";
+                    strSql += "cod_postal, ";
                     strSql += "telefono, ";
                     strSql += "extencion, ";
                     strSql += "responsable, ";
                     strSql += "correo, ";
                     strSql += "estatus) ";
                     strSql += "VALUES ";
-                    strSql += "(" + suc.id_sucursal + ", ";
-                    strSql += "" + suc.id_empresa +", ";
-                    strSql += "'" + suc.sucursal + "', ";
-                    strSql += "'" + suc.calle + "', ";
-                    strSql += "'" + suc.num_ext + "', ";
-                    strSql += "'" + suc.num_int + "', ";
-                    strSql += "'" + suc.colonia + "', ";
-                    strSql += "'" + suc.pais + "', ";
-                    strSql += "'" + suc.estado +"', ";
-                    strSql += "" + suc.ciudad + ", ";
-                    strSql += "'" + suc.codigo_pos + "', ";
-                    strSql += "'" + suc.telefono + "', ";
-                    strSql += "'" + suc.extencion + "', ";
-                    strSql += "'" + suc.responsable  + "', ";
-                    strSql += "'" + suc.correo + "', ";
-                    strSql += "" + suc.estatus + ") ";
+                    strSql += "(" + dRow["id_sucursal"] + ", ";
+                    strSql += "" + dRow["id_empresa"] +", ";
+                    strSql += "'" + dRow["sucursal"] + "', ";
+                    strSql += "'" + dRow["calle"] + "', ";
+                    strSql += "'" + dRow["num_ext"] + "', ";
+                    strSql += "'" + dRow["num_int"] + "', ";
+                    strSql += "'" + dRow["colonia"] + "', ";
+                    strSql += "'" + dRow["pais"] + "', ";
+                    strSql += "'" + dRow["estado"] +"', ";
+                    strSql += "" + dRow["ciudad"] + ", ";
+                    strSql += "'" + dRow["codigo_pos"] + "', ";
+                    strSql += "'" + dRow["telefono"] + "', ";
+                    strSql += "'" + dRow["extencion"] + "', ";
+                    strSql += "'" + dRow["responsable"]  + "', ";
+                    strSql += "'" + dRow["correo"] + "', ";
+                    strSql += "" + dRow["estatus"] + ") ";
 
                     cmdObj.CommandText = strSql;
 
@@ -272,7 +273,7 @@ namespace Checador.Model.Clases
          *                                                   Edita la sucursal seleccionada                                                            *
          *                                                                                                                                                           *
          ******************************************************************************************************************************/
-        public Boolean EditaSucursal(List<Sucursal_Mdl> sucursal)
+        public Boolean EditaSucursal(DataTable sucursal)
         {
 
             Boolean Valor = false;
@@ -287,29 +288,29 @@ namespace Checador.Model.Clases
                 cmdObj.Connection = cnObj;
                 string strSql;
 
-                foreach (var suc in sucursal)
+                foreach (DataRow dRow in sucursal.Rows)
                 {
 
                     strSql = "UPDATE ";
                     strSql += "sucursal ";
                     strSql += "SET ";
-                    strSql += "id_empresa = " + suc.id_empresa + ", ";
-                    strSql += "sucursal = '" + suc.sucursal + "', ";
-                    strSql += "calle = '" + suc.calle + "', ";
-                    strSql += "num_ext = '" + suc.num_ext + "', ";
-                    strSql += "num_int = '" + suc.num_int + "', ";
-                    strSql += "colonia = '" + suc.colonia + "', ";
-                    strSql += "id_pais = '" + suc.pais + "', ";
-                    strSql += "id_estado = '" + suc.estado + "', ";
-                    strSql += "id_ciudad = ''" + suc.ciudad + "'', ";
-                    strSql += "codigo_pos =  '" + suc.codigo_pos + "', ";
-                    strSql += "telefono = '" + suc.telefono + "', ";
-                    strSql += "extencion = '"+ suc.extencion +"', ";
-                    strSql += "responsable = '" + suc.responsable  + "', ";
-                    strSql += "correo = '" + suc.correo  + "', ";
-                    strSql += "estatus = " + suc.estatus + " ";
+                    strSql += "id_empresa = " + dRow["id_empresa"] + ", ";
+                    strSql += "sucursal = '" + dRow["sucursal"] + "', ";
+                    strSql += "calle = '" + dRow["calle"] + "', ";
+                    strSql += "num_ext = '" + dRow["num_ext"] + "', ";
+                    strSql += "num_int = '" + dRow["num_int"] + "', ";
+                    strSql += "colonia = '" + dRow["colonia"] + "', ";
+                    strSql += "id_pais = " + dRow["pais"] + ", ";
+                    strSql += "id_estado = " + dRow["estado"] + ", ";
+                    strSql += "id_ciudad = " + dRow["ciudad"] + ", ";
+                    strSql += "cod_postal =  '" + dRow["codigo_pos"] + "', ";
+                    strSql += "telefono = '" + dRow["telefono"] + "', ";
+                    strSql += "extencion = '"+ dRow["extencion"] +"', ";
+                    strSql += "responsable = '" + dRow["responsable"]  + "', ";
+                    strSql += "correo = '" + dRow["correo"]  + "', ";
+                    strSql += "estatus = " + dRow["estatus"] + " ";
                     strSql += "WHERE ";
-                    strSql += "id_sucursal = '" + suc.id_sucursal + "'";
+                    strSql += "id_sucursal = " + dRow["id_sucursal"] + "";
 
                     cmdObj.CommandText = strSql;
 

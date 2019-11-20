@@ -11,8 +11,6 @@ namespace Checador.Model
 
         public string id_pais { get; set; }
 
-        public string clave { get; set; }
-
         public string pais { get; set; }
 
     }

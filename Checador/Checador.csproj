@@ -114,6 +114,12 @@
     <Compile Include="View\Catalogos\frmPuestos.Designer.cs">
       <DependentUpon>frmPuestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Catalogos\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Catalogos\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmPuestos.resx">
       <DependentUpon>frmPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Catalogos\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>

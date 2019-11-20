@@ -82,6 +82,33 @@ namespace Checador.View.Catalogos
 
         }
 
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+
+            if(fgUsuarios.Row > 0)
+            {
+
+                Editar();
+
+            }
+
+        }
+
+        private void Nuevo()
+        {
+
+        }
+
+        private void Editar()
+        {
+
+            frmUsuario frmusuario = new frmUsuario(Convert.ToInt32(fgUsuarios.GetData(fgUsuarios.Row, 0)));
+            frmusuario.ShowDialog();
+
+            CargaUsuarios();
+
+        }
+
     }
 
 }

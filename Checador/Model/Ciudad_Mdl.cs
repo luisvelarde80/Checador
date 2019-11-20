@@ -13,8 +13,6 @@ namespace Checador.Model
 
         public string id_estado { get; set; }
 
-        public string clave { get; set; }
-
         public string ciudad { get; set; }
 
     }

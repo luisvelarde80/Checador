@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Checador.Controller;
-using Checador.Model;
 
 namespace Checador.View.Catalogos
 {
@@ -46,17 +45,11 @@ namespace Checador.View.Catalogos
         private void CargaPuesto()
         {
 
-            List<Puesto_Mdl> ListaPuestos = new List<Puesto_Mdl>();
+            BindingSource dbPuesto = new BindingSource();
             Puesto_Ctl objPuestos = new Puesto_Ctl();
+            dbPuesto.DataSource = objPuestos.PuestoSeleccionado(idPuesto);
 
-            ListaPuestos = objPuestos.PuestoSeleccionado(idPuesto);
-
-            foreach(var puesto in ListaPuestos)
-            {
-
-                txtPuesto.Text = puesto.puesto;
-
-            }
+            txtPuesto.DataBindings.Add("Text", dbPuesto, "puesto", true);
 
         }
 

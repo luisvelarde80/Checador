@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Checador.Controller;
-using Checador.Model;
 
 namespace Checador.View.Catalogos
 {
@@ -18,25 +17,12 @@ namespace Checador.View.Catalogos
         private int idDepto = 0;
         Departamento_Ctl objDepto = new Departamento_Ctl();
 
-        public frmDepartamento()
-        {
-        
-            InitializeComponent();
-            
-        }
-
-        public frmDepartamento(int _idDepto)
-        {
-
-            InitializeComponent();
-            idDepto = _idDepto;
-
-        }
+        #region "Formulario"
 
         private void frmDepartamento_Load(object sender, EventArgs e)
         {
 
-            if(idDepto > 0)
+            if (idDepto > 0)
             {
 
                 CargaDepto();
@@ -48,10 +34,10 @@ namespace Checador.View.Catalogos
         private void tsbGuardar_Click(object sender, EventArgs e)
         {
 
-            if(txtDepto.Text != "")
+            if (txtDepto.Text != "")
             {
 
-                if(idDepto > 0)
+                if (idDepto > 0)
                 {
 
                     Edita();
@@ -68,11 +54,34 @@ namespace Checador.View.Catalogos
 
         }
 
+        #endregion
+
+        #region "Constructores"
+
+        public frmDepartamento()
+        {
+
+            InitializeComponent();
+
+        }
+
+        public frmDepartamento(int _idDepto)
+        {
+
+            InitializeComponent();
+            idDepto = _idDepto;
+
+        }
+
+        #endregion
+
+        #region "Funciones"
+
         private void CargaDepto()
         {
-         
+
             BindingSource dbDepto = new BindingSource();
-            dbDepto.DataSource = objDepto.DeptoSeleccionado(VariablesGlobales_Ctl.getIdSucursal() ,idDepto);
+            dbDepto.DataSource = objDepto.DeptoSeleccionado(VariablesGlobales_Ctl.getIdSucursal(), idDepto);
 
             txtDepto.DataBindings.Add("Text", dbDepto, "departamento");
 
@@ -95,7 +104,7 @@ namespace Checador.View.Catalogos
         private void Edita()
         {
 
-            if(objDepto.EditaDepartamento(idDepto,txtDepto.Text) == 1)
+            if (objDepto.EditaDepartamento(idDepto, txtDepto.Text) == 1)
             {
 
                 this.Close();
@@ -104,6 +113,8 @@ namespace Checador.View.Catalogos
             }
 
         }
+
+        #endregion
 
     }
 

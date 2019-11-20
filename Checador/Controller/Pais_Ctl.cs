@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Checador.Model.Clases;
 using Checador.Model;
+using System.Data;
 
 namespace Checador.Controller
 {
@@ -16,6 +17,20 @@ namespace Checador.Controller
         {
 
             return objPais.listaPaises();
+
+        }
+
+        public Boolean NuevoPais(DataTable dtPais) 
+        {
+
+            return objPais.NuevoPais(dtPais);
+
+        }
+
+        public Boolean EditarPais(DataTable dtPais)
+        {
+
+            return objPais.EditarPais(dtPais);
 
         }
 

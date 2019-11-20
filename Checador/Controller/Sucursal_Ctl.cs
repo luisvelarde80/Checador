@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Checador.Controller
 
         }
 
-        public Boolean AgregaSucursal(List<Sucursal_Mdl> sucursal)
+        public Boolean AgregaSucursal(DataTable sucursal)
         {
 
             Sucursal_Cls objSucursal = new Sucursal_Cls();
@@ -35,7 +36,7 @@ namespace Checador.Controller
 
         }
 
-        public Boolean EditaSucursal(List<Sucursal_Mdl> sucursal)
+        public Boolean EditaSucursal(DataTable sucursal)
         {
 
             Sucursal_Cls objSucursal = new Sucursal_Cls();

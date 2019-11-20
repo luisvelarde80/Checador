@@ -15,12 +15,15 @@ namespace Checador.View
     public partial class frmSucursal : Form
     {
 
-        private int id;
-        public frmSucursal(int _id)
+        private int idSuc;
+
+        #region "Constructor"
+
+        public frmSucursal(int _idSuc)
         {
-           
+
             InitializeComponent();
-            id = _id;
+            idSuc = _idSuc;
             CargaPaises();
 
         }
@@ -29,49 +32,22 @@ namespace Checador.View
         {
 
             InitializeComponent();
-            id = 0;
+            idSuc = 0;
             CargaPaises();
 
         }
 
+        #endregion
+
+        #region "Formulario"
+
         private void frmSucursal_Load(object sender, EventArgs e)
         {
 
-            if (id > 0)
+            if (idSuc > 0)
             {
 
-                Sucursal_Ctl objSucursal = new Sucursal_Ctl();
-
-                List<Sucursal_Mdl> listasucursal = new List<Sucursal_Mdl>();
-                listasucursal = objSucursal.sucursalSeleccionada(id);
-
-                foreach (var sucursal in listasucursal)
-                {
-
-                    txtSucursal.Text = sucursal.sucursal;
-                    txtCalle.Text = sucursal.calle;
-                    txtNumExt.Text = sucursal.num_ext;
-                    txtNumInt.Text = sucursal.num_int;
-                    txtColonia.Text = sucursal.colonia;
-                    txtCodPostal.Text = sucursal.codigo_pos;
-                    cmbPais.SelectedValue = sucursal.pais;
-                    cmbEstado.SelectedValue = sucursal.estado;
-                    cmbCiudad.SelectedValue = sucursal.ciudad;
-                    txtResponsable.Text = sucursal.responsable ;
-                    txtTelefono.Text = sucursal.telefono;
-                    txtExtencion.Text = sucursal.extencion;
-                    txtCorreo.Text = sucursal.correo ;
-
-                    if (sucursal.estatus == 1)
-                    {
-                        chbEstatus.CheckState = CheckState.Checked;
-                    }
-                    else
-                    {
-                        chbEstatus.CheckState = CheckState.Unchecked;
-                    }
-
-                }
+                CargaSucursal();
 
             }
             else
@@ -80,7 +56,69 @@ namespace Checador.View
                 chbEstatus.CheckState = CheckState.Checked;
 
             }
-        
+
+        }
+
+        private void cmbPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            CargaEstados(Convert.ToString(cmbPais.SelectedValue));
+
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            CargaCiudades(Convert.ToString(cmbEstado.SelectedValue));
+
+        }
+
+        private void tsbGuardar_Click(object sender, EventArgs e)
+        {
+
+            if (idSuc > 0)
+            {
+
+                Editar();
+
+            }
+            else
+            {
+
+                Nuevo();
+
+            }
+
+        }
+
+        #endregion
+
+        #region "Funciones"
+
+        private void CargaSucursal()
+        {
+
+            Sucursal_Ctl objSucursal = new Sucursal_Ctl();
+            BindingSource dbSucursal = new BindingSource();
+
+            dbSucursal.DataSource = objSucursal.sucursalSeleccionada(idSuc);
+
+            txtSucursal.DataBindings.Add("Text", dbSucursal, "sucursal", true);
+            txtCalle.DataBindings.Add("Text", dbSucursal, "calle", true);
+            txtNumExt.DataBindings.Add("Text", dbSucursal, "num_ext", true);
+            txtNumInt.DataBindings.Add("Text", dbSucursal, "num_int", true);
+            txtColonia.DataBindings.Add("Text", dbSucursal, "colonia", true);
+            txtCodPostal.DataBindings.Add("Text", dbSucursal, "codigo_pos", true);
+            cmbPais.DataBindings.Add("SelectedValue", dbSucursal, "pais");
+            cmbEstado.DataBindings.Add("SelectedValue", dbSucursal, "estado");
+            cmbCiudad.DataBindings.Add("SelectedValue", dbSucursal, "ciudad");
+            txtResponsable.DataBindings.Add("Text", dbSucursal, "responsable", true);
+            txtTelefono.DataBindings.Add("Text", dbSucursal, "telefono", true);
+            txtExtencion.DataBindings.Add("Text", dbSucursal, "extencion", true);
+            txtCorreo.DataBindings.Add("Text", dbSucursal, "correo", true);
+            chbEstatus.DataBindings.Add("Checked", dbSucursal, "estatus");
+
         }
 
         private void CargaPaises()
@@ -102,18 +140,10 @@ namespace Checador.View
             BindingSource dbEstado = new BindingSource();
             Estado_Ctl objEstado = new Estado_Ctl();
             dbEstado.DataSource = objEstado.listaEstados(idPais);
-  
+
             cmbEstado.DisplayMember = "estado";
             cmbEstado.ValueMember = "id_estado";
             cmbEstado.DataSource = dbEstado;
-
-        }
-
-        private void cmbPais_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-            CargaEstados(Convert.ToString(cmbPais.SelectedValue));
 
         }
 
@@ -130,57 +160,70 @@ namespace Checador.View
 
         }
 
-        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            CargaCiudades(Convert.ToString(cmbEstado.SelectedValue));
-
-        }
-
         private void Nuevo()
         {
 
-            List<Sucursal_Mdl> NuevaSucursal = new List<Sucursal_Mdl>();
-            Sucursal_Mdl objSucursal = new Sucursal_Mdl();
+            DataTable dtSucursal = new DataTable();
 
-            objSucursal.id_empresa = 1;
-            objSucursal.sucursal = txtSucursal.Text;
-            objSucursal.calle = txtCalle.Text;
-            objSucursal.num_ext = txtNumExt.Text;
-            objSucursal.num_int = txtNumInt.Text;
-            objSucursal.colonia = txtColonia.Text;
-            objSucursal.pais = cmbPais.SelectedValue.ToString();
-            objSucursal.estado = cmbEstado.SelectedValue.ToString();
-            objSucursal.ciudad = Convert.ToInt32(cmbCiudad.SelectedValue.ToString());
-            objSucursal.codigo_pos = txtCodPostal.Text;
-            objSucursal.responsable = txtResponsable.Text;
-            objSucursal.telefono = txtTelefono.Text;
-            objSucursal.extencion = txtExtencion.Text;
-            objSucursal.correo = txtCorreo.Text;
+            dtSucursal.Columns.Add("id_sucursal");
+            dtSucursal.Columns.Add("id_empresa");
+            dtSucursal.Columns.Add("sucursal");
+            dtSucursal.Columns.Add("calle");
+            dtSucursal.Columns.Add("num_ext");
+            dtSucursal.Columns.Add("num_int");
+            dtSucursal.Columns.Add("colonia");
+            dtSucursal.Columns.Add("pais");
+            dtSucursal.Columns.Add("estado");
+            dtSucursal.Columns.Add("ciudad");
+            dtSucursal.Columns.Add("codigo_pos");
+            dtSucursal.Columns.Add("responsable");
+            dtSucursal.Columns.Add("telefono");
+            dtSucursal.Columns.Add("extencion");
+            dtSucursal.Columns.Add("correo");
+            dtSucursal.Columns.Add("estatus");
 
-            if(chbEstatus.CheckState == CheckState.Checked)
+            DataRow Renglon = dtSucursal.NewRow();
+
+            Renglon["id_sucursal"] = VariablesGlobales_Ctl.getIdSucursal();
+            Renglon["id_empresa"] = 1;
+            Renglon["sucursal"] = txtSucursal.Text;
+            Renglon["calle"] = txtCalle.Text;
+            Renglon["num_ext"] = txtNumExt.Text;
+            Renglon["num_int"] = txtNumInt.Text;
+            Renglon["colonia"] = txtColonia.Text;
+            Renglon["pais"] = cmbPais.SelectedValue;
+            Renglon["estado"] = cmbEstado.SelectedValue;
+            Renglon["ciudad"] = cmbCiudad.SelectedValue;
+            Renglon["codigo_pos"] = txtCodPostal.Text;
+            Renglon["responsable"] = txtResponsable.Text;
+            Renglon["telefono"] = txtTelefono.Text;
+            Renglon["extencion"] = txtExtencion.Text;
+            Renglon["correo"] = txtCorreo.Text;
+
+            if (chbEstatus.CheckState == CheckState.Checked)
             {
-                objSucursal.estatus = 1;
-            }else
+                Renglon["estatus"] = 1;
+            }
+            else
             {
-                objSucursal.estatus = 0;
+                Renglon["estatus"] = 0;
             }
 
-            NuevaSucursal.Add(objSucursal);
+            dtSucursal.Rows.Add(Renglon);
 
             Sucursal_Ctl objSucursalNuevo = new Sucursal_Ctl();
-            if (objSucursalNuevo.AgregaSucursal(NuevaSucursal) == true)
+            if (objSucursalNuevo.AgregaSucursal(dtSucursal) == true)
             {
-                
+
                 MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
             }
             else
             {
-                
+
                 MessageBox.Show("Error al Guardar los Datos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
             }
 
         }
@@ -188,69 +231,73 @@ namespace Checador.View
         private void Editar()
         {
 
-            List<Sucursal_Mdl> NuevaSucursal = new List<Sucursal_Mdl>();
-            Sucursal_Mdl objSucursal = new Sucursal_Mdl();
 
-            objSucursal.id_empresa = 1;
-            objSucursal.sucursal = txtSucursal.Text;
-            objSucursal.calle = txtCalle.Text;
-            objSucursal.num_ext = txtNumExt.Text;
-            objSucursal.num_int = txtNumInt.Text;
-            objSucursal.colonia = txtColonia.Text;
-            objSucursal.pais = cmbPais.SelectedValue.ToString();
-            objSucursal.estado = cmbEstado.SelectedValue.ToString();
-            objSucursal.ciudad = Convert.ToInt32(cmbCiudad.SelectedValue.ToString());
-            objSucursal.codigo_pos = txtCodPostal.Text;
-            objSucursal.responsable  = txtResponsable.Text;
-            objSucursal.telefono = txtTelefono.Text;
-            objSucursal.correo  = txtCorreo.Text;
+            DataTable dtSucursal = new DataTable();
+
+            dtSucursal.Columns.Add("id_sucursal");
+            dtSucursal.Columns.Add("id_empresa");
+            dtSucursal.Columns.Add("sucursal");
+            dtSucursal.Columns.Add("calle");
+            dtSucursal.Columns.Add("num_ext");
+            dtSucursal.Columns.Add("num_int");
+            dtSucursal.Columns.Add("colonia");
+            dtSucursal.Columns.Add("pais");
+            dtSucursal.Columns.Add("estado");
+            dtSucursal.Columns.Add("ciudad");
+            dtSucursal.Columns.Add("codigo_pos");
+            dtSucursal.Columns.Add("responsable");
+            dtSucursal.Columns.Add("telefono");
+            dtSucursal.Columns.Add("extencion");
+            dtSucursal.Columns.Add("correo");
+            dtSucursal.Columns.Add("estatus");
+
+            DataRow Renglon = dtSucursal.NewRow();
+
+            Renglon["id_sucursal"] = VariablesGlobales_Ctl.getIdSucursal();
+            Renglon["id_empresa"] = 1;
+            Renglon["sucursal"] = txtSucursal.Text;
+            Renglon["calle"] = txtCalle.Text;
+            Renglon["num_ext"] = txtNumExt.Text;
+            Renglon["num_int"] = txtNumInt.Text;
+            Renglon["colonia"] = txtColonia.Text;
+            Renglon["pais"] = cmbPais.SelectedValue;
+            Renglon["estado"] = cmbEstado.SelectedValue;
+            Renglon["ciudad"] = cmbCiudad.SelectedValue;
+            Renglon["codigo_pos"] = txtCodPostal.Text;
+            Renglon["responsable"] = txtResponsable.Text;
+            Renglon["telefono"] = txtTelefono.Text;
+            Renglon["extencion"] = txtExtencion.Text;
+            Renglon["correo"] = txtCorreo.Text;
 
             if (chbEstatus.CheckState == CheckState.Checked)
             {
-                objSucursal.estatus = 1;
+                Renglon["estatus"] = 1;
             }
             else
             {
-                objSucursal.estatus = 0;
+                Renglon["estatus"] = 0;
             }
 
-            NuevaSucursal.Add(objSucursal);
-            Sucursal_Ctl objSucursalNuevo = new Sucursal_Ctl();
+            dtSucursal.Rows.Add(Renglon);
 
-            if(objSucursalNuevo.EditaSucursal(NuevaSucursal) == true)
+            Sucursal_Ctl objSucursalNuevo = new Sucursal_Ctl();
+            if (objSucursalNuevo.EditaSucursal(dtSucursal) == true)
             {
 
-                MessageBox.Show("Datos Actualizados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
             }
             else
             {
 
-                MessageBox.Show("Error al Actualizar los Datos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-
-        }
-
-        private void tsbGuardar_Click(object sender, EventArgs e)
-        {
-
-            if(id > 0)
-            {
-
-                Editar();
-
-            }
-            else
-            {
-
-                Nuevo();
+                MessageBox.Show("Error al Guardar los Datos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
         }
+
+        #endregion
 
     }
 
