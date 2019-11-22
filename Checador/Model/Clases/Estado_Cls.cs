@@ -46,7 +46,7 @@ namespace Checador.Model.Clases
 
                     objEstado.id_estado = rdrObj[0].ToString();
                     objEstado.id_pais = rdrObj[1].ToString();
-                    objEstado.estado = rdrObj[3].ToString();
+                    objEstado.estado = rdrObj[2].ToString();
 
                     listaestados.Add(objEstado);
 

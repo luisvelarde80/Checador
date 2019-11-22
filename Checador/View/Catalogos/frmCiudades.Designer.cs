@@ -49,7 +49,7 @@
             this.tscbEstados});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(254, 25);
+            this.tsMenu.Size = new System.Drawing.Size(269, 25);
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "toolStrip1";
             // 
@@ -61,6 +61,7 @@
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(62, 22);
             this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
@@ -70,19 +71,21 @@
             this.tsbEditar.Name = "tsbEditar";
             this.tsbEditar.Size = new System.Drawing.Size(57, 22);
             this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // tscbEstados
             // 
             this.tscbEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tscbEstados.Name = "tscbEstados";
             this.tscbEstados.Size = new System.Drawing.Size(121, 25);
+            this.tscbEstados.SelectedIndexChanged += new System.EventHandler(this.tscbEstados_SelectedIndexChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.fgCiudades);
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 212);
+            this.panel1.Size = new System.Drawing.Size(269, 212);
             this.panel1.TabIndex = 1;
             // 
             // fgCiudades
@@ -93,14 +96,14 @@
             this.fgCiudades.Name = "fgCiudades";
             this.fgCiudades.Rows.DefaultSize = 19;
             this.fgCiudades.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row;
-            this.fgCiudades.Size = new System.Drawing.Size(254, 212);
+            this.fgCiudades.Size = new System.Drawing.Size(269, 212);
             this.fgCiudades.TabIndex = 0;
             // 
             // frmCiudades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 243);
+            this.ClientSize = new System.Drawing.Size(269, 243);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tsMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

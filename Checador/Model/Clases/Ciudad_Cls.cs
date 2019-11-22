@@ -62,7 +62,7 @@ namespace Checador.Model.Clases
 
         }
 
-        public List<Ciudad_Mdl> listaCiudades(string idEstado)
+        public List<Ciudad_Mdl> listaCiudades(int idEstado)
         {
 
             List<Ciudad_Mdl> listaciudades = new List<Ciudad_Mdl>();
@@ -95,7 +95,56 @@ namespace Checador.Model.Clases
 
                     objCiudad.id_ciudad = Convert.ToInt32(rdrObj[0].ToString());
                     objCiudad.id_estado = rdrObj[1].ToString();
-                    objCiudad.ciudad = rdrObj[3].ToString();
+                    objCiudad.ciudad = rdrObj[2].ToString();
+
+                    listaciudades.Add(objCiudad);
+
+                }
+
+                rdrObj.Close();
+                cnObj.Close();
+
+            }
+
+            return listaciudades;
+
+        }
+
+        public List<Ciudad_Mdl> CiudadSeleccionada(int idEstado, int idCiudad)
+        {
+
+            List<Ciudad_Mdl> listaciudades = new List<Ciudad_Mdl>();
+            MySqlConnection cnObj = new MySqlConnection();
+            cnObj = objConexion.Conectar();
+
+            if (cnObj != null)
+            {
+
+                MySqlCommand cmdObj = new MySqlCommand();
+                cmdObj.Connection = cnObj;
+                string strSql;
+
+                strSql = "SELECT ";
+                strSql += "id_ciudad, ";
+                strSql += "id_estado, ";
+                strSql += "ciudad ";
+                strSql += "FROM ";
+                strSql += "ciudad ";
+                strSql += "WHERE ";
+                strSql += "id_estado = '" + idEstado + "' AND ";
+                strSql += "id_ciudad = " + idCiudad + "";
+
+                cmdObj.CommandText = strSql;
+                MySqlDataReader rdrObj = cmdObj.ExecuteReader();
+
+                while (rdrObj.Read())
+                {
+
+                    Ciudad_Mdl objCiudad = new Ciudad_Mdl();
+
+                    objCiudad.id_ciudad = Convert.ToInt32(rdrObj[0].ToString());
+                    objCiudad.id_estado = rdrObj[1].ToString();
+                    objCiudad.ciudad = rdrObj[2].ToString();
 
                     listaciudades.Add(objCiudad);
 

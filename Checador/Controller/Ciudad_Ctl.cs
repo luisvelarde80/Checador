@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Checador.Model.Clases;
 using Checador.Model;
+using System.Data;
 
 namespace Checador.Controller
 {
@@ -20,12 +21,34 @@ namespace Checador.Controller
 
         }
 
-        public List<Ciudad_Mdl> listaCiudades(string idEstado)
+        public List<Ciudad_Mdl> listaCiudades(int idEstado)
         {
 
             return objCiudad.listaCiudades(idEstado);
 
         }
 
+        public List<Ciudad_Mdl> CiudadSeleccionada(int idEstado, int idCiudad)
+        {
+
+            return objCiudad.CiudadSeleccionada(idEstado, idCiudad);
+
+        }
+
+        public Boolean NuevaCiudad(DataTable dtCiudad)
+        {
+
+            return objCiudad.NuevaCiudad(dtCiudad);
+
+        }
+
+        public Boolean EditaCiudad(DataTable dtCiudad)
+        {
+
+            return objCiudad.EditaCiudad(dtCiudad);
+
+        }
+
     }
+
 }

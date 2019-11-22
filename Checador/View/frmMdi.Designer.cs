@@ -129,6 +129,7 @@
             this.tsmiCiudad.Name = "tsmiCiudad";
             this.tsmiCiudad.Size = new System.Drawing.Size(180, 22);
             this.tsmiCiudad.Text = "Ciudad";
+            this.tsmiCiudad.Click += new System.EventHandler(this.tsmiCiudad_Click);
             // 
             // frmMdi
             // 

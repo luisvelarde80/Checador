@@ -70,7 +70,7 @@ namespace Checador.View
         private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            CargaCiudades(Convert.ToString(cmbEstado.SelectedValue));
+            CargaCiudades(Convert.ToInt32(cmbEstado.SelectedValue));
 
         }
 
@@ -147,7 +147,7 @@ namespace Checador.View
 
         }
 
-        private void CargaCiudades(string idEstado)
+        private void CargaCiudades(int idEstado)
         {
 
             BindingSource dbCiudad = new BindingSource();

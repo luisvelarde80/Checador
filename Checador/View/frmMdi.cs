@@ -118,6 +118,15 @@ namespace Checador
 
         }
 
+        private void tsmiCiudad_Click(object sender, EventArgs e)
+        {
+
+            frmCiudades frmciudades = new frmCiudades();
+            frmciudades.MdiParent = this;
+            frmciudades.Show();
+
+        }
+
         #endregion
 
         #region "Control de Asistencia"

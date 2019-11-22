@@ -90,6 +90,12 @@
     <Compile Include="Model\Puesto_Mdl.cs" />
     <Compile Include="Model\Sucursal_Mdl.cs" />
     <Compile Include="Model\Usuario_Mdl.cs" />
+    <Compile Include="View\Catalogos\frmCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmCiudad.Designer.cs">
+      <DependentUpon>frmCiudad.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Catalogos\frmCiudades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Catalogos\frmCiudad.resx">
+      <DependentUpon>frmCiudad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmCiudades.resx">
       <DependentUpon>frmCiudades.cs</DependentUpon>
     </EmbeddedResource>
