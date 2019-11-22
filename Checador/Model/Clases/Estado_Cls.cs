@@ -61,7 +61,7 @@ namespace Checador.Model.Clases
 
         }
 
-        public List<Estado_Mdl> listaEstados(string idEstado)
+        public List<Estado_Mdl> listaEstados(int idPais)
         {
 
             List<Estado_Mdl> listaestados = new List<Estado_Mdl>();
@@ -82,7 +82,7 @@ namespace Checador.Model.Clases
                 strSql += "FROM ";
                 strSql += "estado ";
                 strSql += "WHERE ";
-                strSql += "id_pais = '" + idEstado + "'";
+                strSql += "id_pais = '" + idPais + "'";
 
                 cmdObj.CommandText = strSql;
                 MySqlDataReader rdrObj = cmdObj.ExecuteReader();
@@ -94,7 +94,56 @@ namespace Checador.Model.Clases
 
                     objEstado.id_estado = rdrObj[0].ToString();
                     objEstado.id_pais = rdrObj[1].ToString();
-                    objEstado.estado = rdrObj[3].ToString();
+                    objEstado.estado = rdrObj[2].ToString();
+
+                    listaestados.Add(objEstado);
+
+                }
+
+                rdrObj.Close();
+                cnObj.Close();
+
+            }
+
+            return listaestados;
+
+        }
+
+        public List<Estado_Mdl> EstadoSeleccionado(int idPais, int idEstado)
+        {
+
+            List<Estado_Mdl> listaestados = new List<Estado_Mdl>();
+            MySqlConnection cnObj = new MySqlConnection();
+            cnObj = objConexion.Conectar();
+
+            if (cnObj != null)
+            {
+
+                MySqlCommand cmdObj = new MySqlCommand();
+                cmdObj.Connection = cnObj;
+
+                string strSql;
+                strSql = "SELECT ";
+                strSql += "id_estado, ";
+                strSql += "id_pais, ";
+                strSql += "estado ";
+                strSql += "FROM ";
+                strSql += "estado ";
+                strSql += "WHERE ";
+                strSql += "id_pais = '" + idPais + "' AND ";
+                strSql += "id_estado = " + idEstado + "";
+
+                cmdObj.CommandText = strSql;
+                MySqlDataReader rdrObj = cmdObj.ExecuteReader();
+
+                while (rdrObj.Read())
+                {
+
+                    Estado_Mdl objEstado = new Estado_Mdl();
+
+                    objEstado.id_estado = rdrObj[0].ToString();
+                    objEstado.id_pais = rdrObj[1].ToString();
+                    objEstado.estado = rdrObj[2].ToString();
 
                     listaestados.Add(objEstado);
 

@@ -15,7 +15,7 @@ namespace Checador.Model.Clases
 
         Conexion_Cls objConexion = new Conexion_Cls();
 
-        public List<Pais_Mdl> listaPaises()
+        public List<Pais_Mdl> ListaPaises()
         {
 
             List<Pais_Mdl> listapaises = new List<Pais_Mdl>();          
@@ -42,10 +42,59 @@ namespace Checador.Model.Clases
                 while (rdrObj.Read())
                 {
 
-                    Pais_Mdl objPais = new Pais_Mdl();
+                    Pais_Mdl objPais = new Pais_Mdl
+                    {
+                        id_pais = rdrObj[0].ToString(),
+                        pais = rdrObj[1].ToString()
+                    };
 
-                    objPais.id_pais = rdrObj[0].ToString();
-                    objPais.pais = rdrObj[2].ToString();
+                    listapaises.Add(objPais);
+
+                }
+
+                rdrObj.Close();
+       
+            }
+
+            cnObj.Close();
+            return listapaises;
+            
+        }
+
+        public List<Pais_Mdl> PaisSeleccionado(int idPais)
+        {
+
+            List<Pais_Mdl> listapaises = new List<Pais_Mdl>();
+            MySqlConnection cnObj = new MySqlConnection();
+            cnObj = objConexion.Conectar();
+
+            if (cnObj != null)
+            {
+
+                MySqlCommand cmdObj = new MySqlCommand();
+                cmdObj.Connection = cnObj;
+
+                string strSql;
+
+                strSql = "SELECT ";
+                strSql += "id_pais, ";
+                strSql += "pais ";
+                strSql += "FROM ";
+                strSql += "pais ";
+                strSql += "WHERE ";
+                strSql += "id_pais = " + idPais + "";
+
+                cmdObj.CommandText = strSql;
+                MySqlDataReader rdrObj = cmdObj.ExecuteReader();
+
+                while (rdrObj.Read())
+                {
+
+                    Pais_Mdl objPais = new Pais_Mdl
+                    {
+                        id_pais = rdrObj[0].ToString(),
+                        pais = rdrObj[1].ToString()
+                    };
 
                     listapaises.Add(objPais);
 
@@ -53,11 +102,11 @@ namespace Checador.Model.Clases
 
                 rdrObj.Close();
                 cnObj.Close();
-                
+
             }
 
             return listapaises;
-            
+
         }
 
         public Boolean NuevoPais(DataTable dtPais)

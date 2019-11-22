@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,33 @@ namespace Checador.Controller
 
         }
 
-        public List<Estado_Mdl> listaEstados(string idEstado)
+        public List<Estado_Mdl> listaEstados(int idPais)
         {
 
-            return objEstados.listaEstados(idEstado);
+            return objEstados.listaEstados(idPais);
 
         }
 
+        public List<Estado_Mdl> EstadoSeleccionado(int idPais, int idEstado)
+        {
+
+            return objEstados.EstadoSeleccionado(idPais, idEstado);
+
+        }
+
+        public Boolean NuevoEstado(DataTable dtEstado)
+        {
+
+            return objEstados.NuevoEstado(dtEstado);
+
+        }
+
+        public Boolean EditaEstado(DataTable dtEstado)
+        {
+
+            return objEstados.EditaEstado(dtEstado);
+
+        }
 
     }
 

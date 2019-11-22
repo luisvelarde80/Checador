@@ -67,24 +67,25 @@ namespace Checador.Model.Clases
                 while (rdrObj.Read())
                 {
 
-                    Sucursal_Mdl objSucursal = new Sucursal_Mdl();
-
-                    objSucursal.id_sucursal = Convert.ToInt32(rdrObj[0].ToString());
-                    objSucursal.id_empresa = Convert.ToInt32(rdrObj[1].ToString());
-                    objSucursal.sucursal = rdrObj[2].ToString();
-                    objSucursal.calle = rdrObj[3].ToString();
-                    objSucursal.num_ext = rdrObj[4].ToString();
-                    objSucursal.num_int = rdrObj[5].ToString();
-                    objSucursal.colonia = rdrObj[6].ToString();
-                    objSucursal.pais = rdrObj[7].ToString();
-                    objSucursal.estado = rdrObj[8].ToString();
-                    objSucursal.ciudad = Convert.ToInt32(rdrObj[9].ToString());
-                    objSucursal.codigo_pos = rdrObj[10].ToString();
-                    objSucursal.telefono = rdrObj[11].ToString();
-                    objSucursal.extencion = rdrObj[12].ToString();
-                    objSucursal.responsable  = rdrObj[13].ToString();
-                    objSucursal.correo  = rdrObj[14].ToString();
-                    objSucursal.estatus = Convert.ToInt32(rdrObj[15].ToString());
+                    Sucursal_Mdl objSucursal = new Sucursal_Mdl
+                    {
+                        id_sucursal = Convert.ToInt32(rdrObj[0].ToString()),
+                        id_empresa = Convert.ToInt32(rdrObj[1].ToString()),
+                        sucursal = rdrObj[2].ToString(),
+                        calle = rdrObj[3].ToString(),
+                        num_ext = rdrObj[4].ToString(),
+                        num_int = rdrObj[5].ToString(),
+                        colonia = rdrObj[6].ToString(),
+                        pais = rdrObj[7].ToString(),
+                        estado = rdrObj[8].ToString(),
+                        ciudad = Convert.ToInt32(rdrObj[9].ToString()),
+                        codigo_pos = rdrObj[10].ToString(),
+                        telefono = rdrObj[11].ToString(),
+                        extencion = rdrObj[12].ToString(),
+                        responsable = rdrObj[13].ToString(),
+                        correo = rdrObj[14].ToString(),
+                        estatus = Convert.ToInt32(rdrObj[15].ToString())
+                    };
 
                     listasucursal.Add(objSucursal);
 
@@ -149,24 +150,25 @@ namespace Checador.Model.Clases
                 while (rdrObj.Read())
                 {
 
-                    Sucursal_Mdl objSucursal = new Sucursal_Mdl();
-
-                    objSucursal.id_sucursal = Convert.ToInt32(rdrObj[0].ToString());
-                    objSucursal.id_empresa = Convert.ToInt32(rdrObj[1].ToString());
-                    objSucursal.sucursal = rdrObj[2].ToString();
-                    objSucursal.calle = rdrObj[3].ToString();
-                    objSucursal.num_ext = rdrObj[4].ToString();
-                    objSucursal.num_int = rdrObj[5].ToString();
-                    objSucursal.colonia = rdrObj[6].ToString();
-                    objSucursal.pais = rdrObj[7].ToString();
-                    objSucursal.estado = rdrObj[8].ToString();
-                    objSucursal.ciudad = Convert.ToInt32(rdrObj[9].ToString());
-                    objSucursal.codigo_pos = rdrObj[10].ToString();
-                    objSucursal.telefono = rdrObj[11].ToString();
-                    objSucursal.extencion = rdrObj[12].ToString();
-                    objSucursal.responsable = rdrObj[13].ToString();
-                    objSucursal.correo = rdrObj[14].ToString();
-                    objSucursal.estatus = Convert.ToInt32(rdrObj[15].ToString());
+                    Sucursal_Mdl objSucursal = new Sucursal_Mdl
+                    {
+                        id_sucursal = Convert.ToInt32(rdrObj[0].ToString()),
+                        id_empresa = Convert.ToInt32(rdrObj[1].ToString()),
+                        sucursal = rdrObj[2].ToString(),
+                        calle = rdrObj[3].ToString(),
+                        num_ext = rdrObj[4].ToString(),
+                        num_int = rdrObj[5].ToString(),
+                        colonia = rdrObj[6].ToString(),
+                        pais = rdrObj[7].ToString(),
+                        estado = rdrObj[8].ToString(),
+                        ciudad = Convert.ToInt32(rdrObj[9].ToString()),
+                        codigo_pos = rdrObj[10].ToString(),
+                        telefono = rdrObj[11].ToString(),
+                        extencion = rdrObj[12].ToString(),
+                        responsable = rdrObj[13].ToString(),
+                        correo = rdrObj[14].ToString(),
+                        estatus = Convert.ToInt32(rdrObj[15].ToString())
+                    };
 
                     listasucursal.Add(objSucursal);
 

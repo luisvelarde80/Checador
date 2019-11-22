@@ -13,10 +13,17 @@ namespace Checador.Controller
     {
         Pais_Cls objPais = new Pais_Cls();
 
-        public List<Pais_Mdl> listaPaises()
+        public List<Pais_Mdl> ListaPaises()
         {
 
-            return objPais.listaPaises();
+            return objPais.ListaPaises();
+
+        }
+
+        public List<Pais_Mdl> PaisSeleccionado(int idPais)
+        {
+
+            return objPais.PaisSeleccionado(idPais);
 
         }
 

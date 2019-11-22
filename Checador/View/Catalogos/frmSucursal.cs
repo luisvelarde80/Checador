@@ -63,7 +63,7 @@ namespace Checador.View
         {
 
 
-            CargaEstados(Convert.ToString(cmbPais.SelectedValue));
+            CargaEstados(Convert.ToInt32(cmbPais.SelectedValue));
 
         }
 
@@ -126,7 +126,7 @@ namespace Checador.View
 
             BindingSource dbPais = new BindingSource();
             Pais_Ctl objPais = new Pais_Ctl();
-            dbPais.DataSource = objPais.listaPaises();
+            dbPais.DataSource = objPais.ListaPaises();
 
             cmbPais.ValueMember = "id_pais";
             cmbPais.DisplayMember = "pais";
@@ -134,7 +134,7 @@ namespace Checador.View
 
         }
 
-        private void CargaEstados(string idPais)
+        private void CargaEstados(int idPais)
         {
 
             BindingSource dbEstado = new BindingSource();

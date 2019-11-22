@@ -34,12 +34,12 @@
             this.tsmiCatalogo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSucursales = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDepartamentos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPuestos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPaisEstadoCiudad = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPais = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEstado = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCiudad = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPuestos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +86,13 @@
             this.tsmiDepartamentos.Text = "Departamentos";
             this.tsmiDepartamentos.Click += new System.EventHandler(this.tsmiDepartamentos_Click);
             // 
+            // tsmiPuestos
+            // 
+            this.tsmiPuestos.Name = "tsmiPuestos";
+            this.tsmiPuestos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPuestos.Text = "Puestos";
+            this.tsmiPuestos.Click += new System.EventHandler(this.tsmiPuestos_Click);
+            // 
             // tsmiUsuarios
             // 
             this.tsmiUsuarios.Name = "tsmiUsuarios";
@@ -108,25 +115,20 @@
             this.tsmiPais.Name = "tsmiPais";
             this.tsmiPais.Size = new System.Drawing.Size(180, 22);
             this.tsmiPais.Text = "Pais";
+            this.tsmiPais.Click += new System.EventHandler(this.tsmiPais_Click);
             // 
             // tsmiEstado
             // 
             this.tsmiEstado.Name = "tsmiEstado";
             this.tsmiEstado.Size = new System.Drawing.Size(180, 22);
             this.tsmiEstado.Text = "Estado";
+            this.tsmiEstado.Click += new System.EventHandler(this.tsmiEstado_Click);
             // 
             // tsmiCiudad
             // 
             this.tsmiCiudad.Name = "tsmiCiudad";
             this.tsmiCiudad.Size = new System.Drawing.Size(180, 22);
             this.tsmiCiudad.Text = "Ciudad";
-            // 
-            // tsmiPuestos
-            // 
-            this.tsmiPuestos.Name = "tsmiPuestos";
-            this.tsmiPuestos.Size = new System.Drawing.Size(180, 22);
-            this.tsmiPuestos.Text = "Puestos";
-            this.tsmiPuestos.Click += new System.EventHandler(this.tsmiPuestos_Click);
             // 
             // frmMdi
             // 

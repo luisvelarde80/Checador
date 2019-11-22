@@ -90,6 +90,12 @@
     <Compile Include="Model\Puesto_Mdl.cs" />
     <Compile Include="Model\Sucursal_Mdl.cs" />
     <Compile Include="Model\Usuario_Mdl.cs" />
+    <Compile Include="View\Catalogos\frmCiudades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmCiudades.Designer.cs">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Catalogos\frmDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,30 @@
     </Compile>
     <Compile Include="View\Catalogos\frmDepartamentos.Designer.cs">
       <DependentUpon>frmDepartamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Catalogos\frmEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmEstado.Designer.cs">
+      <DependentUpon>frmEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Catalogos\frmEstados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmEstados.Designer.cs">
+      <DependentUpon>frmEstados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Catalogos\frmPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmPais.Designer.cs">
+      <DependentUpon>frmPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Catalogos\frmPaises.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Catalogos\frmPaises.Designer.cs">
+      <DependentUpon>frmPaises.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Catalogos\frmPuesto.cs">
       <SubType>Form</SubType>
@@ -169,11 +199,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Catalogos\frmCiudades.resx">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmDepartamento.resx">
       <DependentUpon>frmDepartamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmDepartamentos.resx">
       <DependentUpon>frmDepartamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Catalogos\frmEstado.resx">
+      <DependentUpon>frmEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Catalogos\frmEstados.resx">
+      <DependentUpon>frmEstados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Catalogos\frmPais.resx">
+      <DependentUpon>frmPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Catalogos\frmPaises.resx">
+      <DependentUpon>frmPaises.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Catalogos\frmPuesto.resx">
       <DependentUpon>frmPuesto.cs</DependentUpon>
