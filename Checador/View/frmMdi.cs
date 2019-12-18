@@ -127,6 +127,24 @@ namespace Checador
 
         }
 
+        private void tsmiEmpAlta_Click(object sender, EventArgs e)
+        {
+
+            frmEmpleados frmempleados = new frmEmpleados(1);
+            frmempleados.MdiParent = this;
+            frmempleados.Show();
+
+        }
+
+        private void tsmiEmpBaja_Click(object sender, EventArgs e)
+        {
+
+            frmEmpleados frmempleados = new frmEmpleados();
+            frmempleados.MdiParent = this;
+            frmempleados.Show();
+
+        }
+
         #endregion
 
         #region "Control de Asistencia"

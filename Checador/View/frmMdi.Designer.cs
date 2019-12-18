@@ -40,6 +40,9 @@
             this.tsmiPais = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEstado = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCiudad = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmpAlta = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmpBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +70,8 @@
             this.tsmiDepartamentos,
             this.tsmiPuestos,
             this.tsmiUsuarios,
-            this.tsmiPaisEstadoCiudad});
+            this.tsmiPaisEstadoCiudad,
+            this.empleadoToolStripMenuItem});
             this.tsmiCatalogo.Name = "tsmiCatalogo";
             this.tsmiCatalogo.Size = new System.Drawing.Size(67, 20);
             this.tsmiCatalogo.Text = "Catalogo";
@@ -113,23 +117,46 @@
             // tsmiPais
             // 
             this.tsmiPais.Name = "tsmiPais";
-            this.tsmiPais.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPais.Size = new System.Drawing.Size(112, 22);
             this.tsmiPais.Text = "Pais";
             this.tsmiPais.Click += new System.EventHandler(this.tsmiPais_Click);
             // 
             // tsmiEstado
             // 
             this.tsmiEstado.Name = "tsmiEstado";
-            this.tsmiEstado.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEstado.Size = new System.Drawing.Size(112, 22);
             this.tsmiEstado.Text = "Estado";
             this.tsmiEstado.Click += new System.EventHandler(this.tsmiEstado_Click);
             // 
             // tsmiCiudad
             // 
             this.tsmiCiudad.Name = "tsmiCiudad";
-            this.tsmiCiudad.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCiudad.Size = new System.Drawing.Size(112, 22);
             this.tsmiCiudad.Text = "Ciudad";
             this.tsmiCiudad.Click += new System.EventHandler(this.tsmiCiudad_Click);
+            // 
+            // empleadoToolStripMenuItem
+            // 
+            this.empleadoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEmpAlta,
+            this.tsmiEmpBaja});
+            this.empleadoToolStripMenuItem.Name = "empleadoToolStripMenuItem";
+            this.empleadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empleadoToolStripMenuItem.Text = "Empleados";
+            // 
+            // tsmiEmpAlta
+            // 
+            this.tsmiEmpAlta.Name = "tsmiEmpAlta";
+            this.tsmiEmpAlta.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEmpAlta.Text = "Alta";
+            this.tsmiEmpAlta.Click += new System.EventHandler(this.tsmiEmpAlta_Click);
+            // 
+            // tsmiEmpBaja
+            // 
+            this.tsmiEmpBaja.Name = "tsmiEmpBaja";
+            this.tsmiEmpBaja.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEmpBaja.Text = "Baja";
+            this.tsmiEmpBaja.Click += new System.EventHandler(this.tsmiEmpBaja_Click);
             // 
             // frmMdi
             // 
@@ -165,6 +192,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiEstado;
         private System.Windows.Forms.ToolStripMenuItem tsmiCiudad;
         private System.Windows.Forms.ToolStripMenuItem tsmiPuestos;
+        private System.Windows.Forms.ToolStripMenuItem empleadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEmpAlta;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEmpBaja;
     }
 }
 
