@@ -69,7 +69,15 @@ namespace Checador.View.Catalogos
             CargaPais();
             CargaEstado();
             CargaCiudad();
-     
+            CargaBancos();
+            CargaJornadas();
+            CargaSucursales();
+            CargaDepto();
+            CargaPuestos();
+            CargarMetodoPago();
+            CargarContratos();
+            CargarTipoSalario();
+
         }
 
         private void CargaEstado()
@@ -112,6 +120,118 @@ namespace Checador.View.Catalogos
             cmbCiudad.ValueMember = "id_ciudad";
             cmbCiudad.DisplayMember = "ciudad";
 
+        }
+
+        private void CargaBancos()
+        {
+
+            BindingSource dbBancos = new BindingSource();
+            Banco_Ctl objBanco = new Banco_Ctl();
+
+            dbBancos.DataSource = objBanco.ListaBancos();
+
+            cmbBanco.DataSource = dbBancos;
+            cmbBanco.ValueMember = "id_banco";
+            cmbBanco.DisplayMember = "banco";
+
+        }
+
+        private void CargaJornadas()
+        {
+
+            BindingSource dbJornadas = new BindingSource();
+            Jornada_Ctl objJornada = new Jornada_Ctl();
+
+            dbJornadas.DataSource = objJornada.ListaJornada();
+
+            cmbJornada.DataSource = dbJornadas;
+            cmbJornada.ValueMember = "id_jornada";
+            cmbJornada.DisplayMember = "jornada";
+
+        }
+
+        private void CargaSucursales()
+        {
+
+            BindingSource dbSucursal = new BindingSource();
+            Sucursal_Ctl objSucursal = new Sucursal_Ctl();
+
+            dbSucursal.DataSource = objSucursal.listaSucursal();
+
+            cmbSucursal.DataSource = dbSucursal;
+            cmbSucursal.ValueMember = "id_sucursal";
+            cmbSucursal.DisplayMember = "sucursal";
+
+        }
+
+        private void CargaDepto()
+        {
+
+            BindingSource dbDepto = new BindingSource();
+            Departamento_Ctl objDepto = new Departamento_Ctl();
+
+            dbDepto.DataSource = objDepto.ListaDepartamentos(Convert.ToInt32(cmbSucursal.SelectedValue));
+
+            cmbDepto.DataSource = dbDepto;
+            cmbDepto.ValueMember = "id_departamento";
+            cmbDepto.DisplayMember = "departamento";
+
+        }
+
+        private void CargaPuestos()
+        {
+
+            BindingSource dbPuesto = new BindingSource();
+            Puesto_Ctl objPuesto = new Puesto_Ctl();
+
+            dbPuesto.DataSource = objPuesto.ListarPuestos();
+
+            cmbPuesto.DataSource = dbPuesto;
+            cmbPuesto.ValueMember = "id_puesto";
+            cmbPuesto.DisplayMember = "puesto";
+
+        }
+
+        private void CargarMetodoPago()
+        {
+
+            BindingSource dbMetodoPago = new BindingSource();
+            Metodo_Pago_Ctl objMetodoPago = new Metodo_Pago_Ctl();
+
+            dbMetodoPago.DataSource = objMetodoPago.ListarMetodoPago();
+
+            cmbMetPago.DataSource = dbMetodoPago;
+            cmbMetPago.ValueMember = "id_metodo_pago";
+            cmbMetPago.DisplayMember = "metodo_pago";
+
+        }
+
+        private void CargarContratos()
+        {
+
+            BindingSource dbContrato = new BindingSource();
+            Contrato_Ctl objContrato = new Contrato_Ctl();
+
+            dbContrato.DataSource = objContrato.ListarContrato();
+
+            cmbContrato.DataSource = dbContrato;
+            cmbContrato.ValueMember = "id_contrato";
+            cmbContrato.DisplayMember = "contrato";
+
+        }
+
+        private void CargarTipoSalario()
+        {
+
+            BindingSource dbTipoSalario = new BindingSource();
+            Tipo_Salario_Ctl objTipoSalario = new Tipo_Salario_Ctl();
+
+            dbTipoSalario.DataSource = objTipoSalario.ListarTipoSalario();
+
+            cmbTipoSalario.DataSource = dbTipoSalario;
+            cmbTipoSalario.ValueMember = "id_tipo_salario";
+            cmbTipoSalario.DisplayMember = "tipo_salario";
+        
         }
 
         private void CargaEmpleado()
